@@ -28,6 +28,7 @@ def register(request):
         city=request.data.get('city')
     )
     user.save()
+
     return render(request,template_name="base.html")
     # else:
     #     return render(request, template_name="home.html", context={"error": "Password error"})
