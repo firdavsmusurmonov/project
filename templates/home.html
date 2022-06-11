@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>register</title>
+</head>
+{% extends 'base.html' %} {% block content %}
+<body>
+<main>
+    <div class="container">
+        <div class='right class2'>
+            <h2 style="text-align:center" class="sarlavha">SHAXSIY MA'LUMOTLAR</h2>
+            <form action="register" method="POST">
+                {% csrf_token %} {{ home.as_p }}
+                <div class="row align-items-start">
+
+                    <h5 style="text-align: center;color:red;">{{ error }}</h5>
+                    <div class="col-4">
+                        <label>Familiyangiz</label><br>
+                        <input required class="matn" name="first_name" type="text" placeholder="Familiya">
+                    </div>
+                    <div class="col-4">
+                        <label>Ismingiz</label><br>
+                        <input required class="matn" name="last_name" type="text" placeholder="Ism"><br>
+                    </div>
+                    <label class="mt-4">Jinsingiz</label><br>
+                    <div class="col-2">
+                        <label>Erkak</label><br>
+                        <input type="radio" placeholder="ERKAK">
+                    </div>
+                    <div class="col-2">
+                        <label>Ayol</label><br>
+                        <input type="radio" placeholder="Ayol">
+                    </div>
+                    <div class="col-2">
+                        <input type="datetime-local">
+                    </div>
+                    <div style="" class="col-2">
+                        <label class="mt-4">Mamlakatingiz</label><br>
+                        <div class="col-2">
+                            <select>
+                                <option>O'zbekiston</option>
+                                <option>Amerika</option>
+                                <option>Qozoq'siton</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <label class="mt-4">Viloyatingiz</label><br>
+                        <div class="col-2">
+                            <select>
+                                <option>Toshkent</option>
+                                <option>Amerika</option>
+                                <option>Qozoq'siton</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col align-items-start">
+                    <button class="matn" type="submit">Yuborish</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>{% endblock %}
