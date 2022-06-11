@@ -14,7 +14,7 @@
         <div class='right class2'>
             <h2 style="text-align:center" class="sarlavha">SHAXSIY MA'LUMOTLAR</h2>
             <form action="register" method="POST">
-                {% csrf_token %} {{ home.as_p }}
+                {% csrf_token %} {{ base.as_p }}
                 <div class="row align-items-start">
 
                     <h5 style="text-align: center;color:red;">{{ error }}</h5>
@@ -29,11 +29,11 @@
                     <label class="mt-4">Jinsingiz</label><br>
                     <div class="col-2">
                         <label>Erkak</label><br>
-                        <input type="radio" placeholder="ERKAK">
+                        <input type="radio" id="erkak" name="gender" placeholder="ERKAK">
                     </div>
                     <div class="col-2">
                         <label>Ayol</label><br>
-                        <input type="radio" placeholder="Ayol">
+                        <input type="radio" id="ayol" name="gender" placeholder="Ayol">
                     </div>
                     <div class="col-2">
                         <input type="datetime-local">
@@ -41,11 +41,11 @@
                     <div style="" class="col-2">
                         <label class="mt-4">Mamlakatingiz</label><br>
                         <div class="col-2">
+                            {% for tab in tables %}
                             <select>
-                                <option>O'zbekiston</option>
-                                <option>Amerika</option>
-                                <option>Qozoq'siton</option>
+                                <option>{{tab.username}}</option>
                             </select>
+                             {% endfor %}
                         </div>
                     </div>
                     <div class="col-2">
