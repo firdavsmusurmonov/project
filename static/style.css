@@ -1,0 +1,65 @@
+.container {
+  margin: 0;
+  padding: 30px;
+  color:rgb(2, 2, 53);
+  font-family: sans-serif;
+}
+
+h3 {
+  text-transform: uppercase;
+  background-color: rgb(135, 211, 211);
+  padding: 10px;
+}
+
+input, .select_one{
+  width: 30%; 
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border:rgb(135, 211, 211) solid 2px;
+}
+
+.radio {
+  border:rgb(135, 211, 211) solid 2px;
+  /* padding: 10px 60px 10px 0; */
+  margin: 10px 17px 10px 0px;
+  border-radius: 5px;
+  width: 13.8%;
+  cursor: pointer;
+  font-size: 16px;
+  display: inline-block;
+}
+
+.radio label {
+  cursor: pointer;
+}
+
+.select_three {
+  width: 10%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;  
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border:rgb(135, 211, 211) solid 2px;
+
+}
+
+button {
+  color: white;
+  background-color: #2E856F;
+  padding: 13px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #006A4E;
+}
+    
+

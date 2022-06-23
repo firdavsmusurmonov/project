@@ -14,4 +14,5 @@ class RegionAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Customuser, CustomuserAdmin)
+
 admin.site.register(Region, RegionAdmin)

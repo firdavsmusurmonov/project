@@ -1,71 +1,327 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>register</title>
-</head>
 {% extends 'base.html' %} {% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/style.css">
+<title>register</title>
 <body>
 <main>
-    <div class="container">
-        <div class='right class2'>
-            <h2 style="text-align:center" class="sarlavha">SHAXSIY MA'LUMOTLAR</h2>
-            <form action="register" method="POST">
-                {% csrf_token %} {{ home.as_p }}
-                <div class="row align-items-start">
 
-                    <h5 style="text-align: center;color:red;">{{ error }}</h5>
-                    <div class="col-4">
-                        <label>Familiyangiz</label><br>
-                        <input required class="matn" name="first_name" type="text" placeholder="Familiya">
-                    </div>
-                    <div class="col-4">
-                        <label>Ismingiz</label><br>
-                        <input required class="matn" name="last_name" type="text" placeholder="Ism"><br>
-                    </div>
-                    <label class="mt-4">Jinsingiz</label><br>
-                    <div class="col-2">
+            <form action="register" class="container" method="POST">
+                {% csrf_token %} {{ base.as_p }
 
-                        <label>Erkak</label><br>
-                        <input type="radio" id="erkak" name="gender" placeholder="ERKAK">
+                <h3 style="text-align:center" class="sarlavha">SHAXSIY MA'LUMOTLAR</h3>
 
-                     <div class="col-2">
-                        <label>Ayol</label><br>
-                        <input type="radio" id="ayol" name="gender" placeholder="Ayol">
+                <div class="forma-bir">
+
+                    <label for="">Familiya (ingliz tilida)<br>
+                        <input required name="first_name" type="text"><br>
+                    </label>
+
+                    <label for="">Ismingiz (ingliz tilida) <br>
+                        <input required name="last_name" type="text">
+                    </label><br>
+
+                </div>
+
+
+                <div>
+
+                    <label for="">Jinsingiz</label> <br>
+
+                    <div class="radio">
+                        <input type="radio" name="gender" id="radio">
+                        <label for="radio">
+                            <i class="fa-solid fa-person"></i>
+                            Erkak
+                        </label>
                     </div>
-                    <div class="col-2">
-                        <input type="datetime-local">
+
+                    <div class="radio">
+                        <input type="radio" name="gender" id="radio2">
+                        <label for="radio2">
+                            <i class="fa-solid fa-person-dress"></i>
+                            Ayol
+                        </label>
                     </div>
-                    <div style="" class="col-2">
-                        <label class="mt-4">Mamlakatingiz</label><br>
-                        <div class="col-2">
-                            {% for tab in tables %}
-                            <select>
-                                <option>{{tab.username}}</option>
-                            </select>
-                             {% endfor %}
-                        </div>
+
+                </div>
+
+                <div>
+                    <label>
+                        Tug'ilgan kuningiz
+                    </label><br>
+
+                    <select name="#" id="" class="select_three">
+                        <option value="#">1</option>
+                        <option value="#">2</option>
+                        <option value="#">3</option>
+                        <option value="#">4</option>
+                        <option value="#">5</option>
+                        <option value="#">6</option>
+                        <option value="#">7</option>
+                        <option value="#">8</option>
+                        <option value="#">9</option>
+                        <option value="#">10</option>
+                        <option value="#">11</option>
+                        <option value="#">12</option>
+                        <option value="#">13</option>
+                        <option value="#">14</option>
+                        <option value="#">15</option>
+                        <option value="#">16</option>
+                        <option value="#">17</option>
+                        <option value="#">18</option>
+                        <option value="#">19</option>
+                        <option value="#">20</option>
+                        <option value="#">21</option>
+                        <option value="#">22</option>
+                        <option value="#">23</option>
+                        <option value="#">24</option>
+                        <option value="#">25</option>
+                        <option value="#">26</option>
+                        <option value="#">27</option>
+                        <option value="#">28</option>
+                        <option value="#">29</option>
+                        <option value="#">30</option>
+                        <option value="#">31</option>
+                    </select>
+
+                    <select name="#" id="" class="select_three">
+                        <option value="">Yanvar</option>
+                        <option value="">Fevral</option>
+                        <option value="">Mart</option>
+                        <option value="">Aprel</option>
+                        <option value="">May</option>
+                        <option value="">Iyun</option>
+                        <option value="">Iyul</option>
+                        <option value="">Avgust</option>
+                        <option value="">Sentyabr</option>
+                        <option value="">Oktyabr</option>
+                        <option value="">Noyabr</option>
+                        <option value="">Dekabr</option>
+                    </select>
+
+                    <select name="#" id="" class="select_three">
+                        <option value="#">1960</option>
+                        <option value="#">1961</option>
+                        <option value="#">1962</option>
+                        <option value="#">1963</option>
+                        <option value="#">1964</option>
+                        <option value="#">1965</option>
+                        <option value="#">1966</option>
+                        <option value="#">1967</option>
+                        <option value="#">1968</option>
+                        <option value="#">1969</option>
+                        <option value="#">1970</option>
+                        <option value="#">1971</option>
+                        <option value="#">1971</option>
+                        <option value="#">1973</option>
+                        <option value="#">1974</option>
+                        <option value="#">1975</option>
+                        <option value="#">1976</option>
+                        <option value="#">1977</option>
+                        <option value="#">1978</option>
+                        <option value="#">1979</option>
+                        <option value="#">1980</option>
+                    </select> <br>
+                </div>
+
+
+                <div class="grid-container">
+                    <div>
+                        <label for="">Tug'ilgan davlatingiz </label><br>
+                        <select name="" id="" class="select_one">
+                            <option value="#">O'zbekiston</option>
+                        </select>
                     </div>
-                    <div class="col-2">
-                        <label class="mt-4">Viloyatingiz</label><br>
-                        <div class="col-2">
-                            <select>
-                                <option>Toshkent</option>
-                                <option>Amerika</option>
-                                <option>Qozoq'siton</option>
-                            </select>
-                        </div>
+
+                    <div>
+                        <label for="">Tug'ilgan viloyatingiz</label><br>
+                        <select name="" id="" class="select_one">
+                            <option value="">Andijon viloyati</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="">Tug'ilgan tumaningiz</label><br>
+                        <select name="" id="" class="select_one">
+                            <option value="#">Andijon shahri</option>
+                        </select>
                     </div>
                 </div>
-                <div class="col align-items-start">
-                    <button class="matn" type="submit">Yuborish</button>
-                </div>
+
+                <label for="">XALQARO YOKI BIO PASPORT MA`LUMOTLARINGIZ (SERIYA RAQAMI VA AMAL QILISH MUDDATI)</label>
+                <br>
+                <input type="text" placeholder="FA1234567">
+                <select name="" id="" class="select_three">
+                    <option value="#">1</option>
+                    <option value="#">2</option>
+                </select>
+
+                <select name="" id="" class="select_three">
+                    <option value="">Yanvar</option>
+                    <option value="">Fevral</option>
+                    <option value="">Mart</option>
+                    <option value="">Aprel</option>
+                    <option value="">May</option>
+                    <option value="">Iyun</option>
+                    <option value="">Iyul</option>
+                    <option value="">Avgust</option>
+                    <option value="">Sentyabr</option>
+                    <option value="">Oktyabr</option>
+                    <option value="">Noyabr</option>
+                    <option value="">Dekabr</option>
+                </select>
+
+                <select name="" id="" class="select_three">
+                    <option value="">1960</option>
+                </select>
+
+
+                <h3>Rasim joylashtirish</h3>
+                <section class="section_img">
+
+                    <div>
+                        <img src="./image/avatar.png" alt="image"><br>
+                        <input type="file" placeholder="Fotosurat yuklash">
+                    </div>
+                    <div>
+                        <p>
+                        <p class="green">Fotosurat yuklashning qisqacha qoidalari:</p>
+                        <p class="red">DIQQAT: Uy sharoitida tushirilgan rasmlarni yuklamang. Rasm fotosalonda
+                            tushirilgan
+                            bo’lishi
+                            kerak.</p>
+
+                        <p class="matn">
+                            Yuklanayotgan fotosurat maksimal hajmi 240 KB dan oshmasligi.
+                            Fotosurat kengligi kamida 600X600 piksel yoki 5x5 sm bo'lishi lozim.
+                            Fotosurat foni oq va ravshan bo'lishi lozim.
+                            Fotosuratni kerakli hajmda kesish va tayyorlash uchun mana bu yerga o'ting.
+                        </p>
+                        </p>
+                    </div>
+
+                </section>
+
+
+                <h3>Yashash manzilingiz</h3>
+
+                <label for="">Tug'ilgan davlatingiz</label><br>
+                <select name="" id="" class="select_one">
+                    <option value="#">O'zbekiston</option>
+                    <option value="#">Qozog'iston</option>
+                    <option value="#">Tojikiston</option>
+                    <option value="#">Qirg'iziston</option>
+                    <option value="#">Turkmaniston</option>
+                </select><br>
+
+                <label for="">Tug'ilgan viloyatingiz</label><br>
+                <select name="" id="" class="select_one">
+                    <option value="">Andijon viloyati</option>
+                    <option value="">Buxoro viloyati</option>
+                    <option value="">Farg'ona viloyati</option>
+                    <option value="">Jizzax viloyati</option>
+                    <option value="">Namangan viloyati</option>
+                    <option value="">Navoiy viloyati</option>
+                    <option value="">Qashqadayo viloyati</option>
+                    <option value="">Qoraqalpog'iston</option>
+                    <option value="">Samarqand viloyati</option>
+                    <option value="">Surxondaryo viloyati</option>
+                    <option value="">Toshkent viloyati</option>
+                    <option value="">Toshkent shahri</option>
+                    <option value="">Xorazm viloyati</option>
+                </select><br>
+
+                <label for="">Tug'ilgan tumaningiz</label><br>
+                <select name="" id="" class="select_one">
+                    <option value="#">Andijon shahri</option>
+                </select><br>
+
+                <label for="">manzilingiz</label><br>
+                <input type="text"><br>
+                <label for="">Telefon raqamingiz</label><br>
+                <input type="number">
+
+
+                <h3>Ta'lim darajangiz</h3>
+                <label for="">Ta'lim darajangizni tanlang</label><br>
+                <select name="" id="" class="select_one">
+                    <option value="#">maktab(9-sinf)</option>
+                    <option value="#">maktab(11-sinf)</option>
+                    <option value="#">litsey</option>
+                    <option value="#">Kollej</option>
+                    <option value="#">Oliy ma'lumot</option>
+                    <option value="#">Magistratura</option>
+                    <option value="#">Aspirantura</option>
+                    <option value="#">Doktorantura</option>
+                </select>
+
+                <h3>Oilaviy holatingiz</h3>
+                <label for="">Oilaviy holatingiz</label><br>
+                <select name="" id="" class="select_one">
+                    <option value="" >Tanlangan</option>
+                    <option value="">Uylanmagan/Turmishga chiqmagan</option>
+
+                </select><br>
+
+                <button type="submit">Anketani yuborish</button>
+
             </form>
-        </div>
-    </div>
+
+
 </main>
 </body>
-</html>{% endblock %}
+{% endblock %}
+
+<div>
+
+    <!--                <div class="row align-items-start">-->
+
+    <!--                    <h5 style="text-align: center;color:red;">{{ error }}</h5>-->
+    <!--                    <div class="col-4">-->
+    <!--                        <label>Familiyangiz</label><br>-->
+    <!--                        <input required class="matn" name="first_name" type="text" placeholder="Familiya">-->
+    <!--                    </div>-->
+    <!--                    <div class="col-4">-->
+    <!--                        <label>Ismingiz</label><br>-->
+    <!--                        <input required class="matn" name="last_name" type="text" placeholder="Ism"><br>-->
+    <!--                    </div>-->
+    <!--                    <label class="mt-4">Jinsingiz</label><br>-->
+    <!--                    <div class="col-2">-->
+
+    <!--                        <label>Erkak</label><br>-->
+    <!--                        <input type="radio" id="erkak" name="gender" placeholder="ERKAK">-->
+
+    <!--                     <div class="col-2">-->
+    <!--                        <label>Ayol</label><br>-->
+    <!--                        <input type="radio" id="ayol" name="gender" placeholder="Ayol">-->
+    <!--                    </div>-->
+    <!--                    <div class="col-2">-->
+    <!--                        <input type="datetime-local">-->
+    <!--                    </div>-->
+    <!--                    <div style="" class="col-2">-->
+    <!--                        <label class="mt-4">Mamlakatingiz</label><br>-->
+    <!--                        <div class="col-2">-->
+    <!--                            {% for tab in tables %}-->
+    <!--                            <select>-->
+    <!--                                <option>{{tab.username}}</option>-->
+    <!--                            </select>-->
+    <!--                             {% endfor %}-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                    <div class="col-2">-->
+    <!--                        <label class="mt-4">Viloyatingiz</label><br>-->
+    <!--                        <div class="col-2">-->
+    <!--                            <select>-->
+    <!--                                <option>Toshkent</option>-->
+    <!--                                <option>Amerika</option>-->
+    <!--                                <option>Qozoq'siton</option>-->
+    <!--                            </select>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--                <div class="col align-items-start">-->
+    <!--                    <button class="matn" type="submit">Yuborish</button>-->
+    <!--                </div>-->
+    <!--                </div>-->
+</div>
