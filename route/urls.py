@@ -8,5 +8,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', homepage, name='home'),
+    path('registr', registr),
+    path('me', me),
+    path('region', region),
 ]
 urlpatterns += router.urls
