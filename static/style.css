@@ -1,6 +1,4 @@
 .container {
-  margin: 0;
-  padding: 30px;
   color:rgb(2, 2, 53);
   font-family: sans-serif;
 }
@@ -10,9 +8,8 @@ h3 {
   background-color: rgb(135, 211, 211);
   padding: 10px;
 }
-
 input, .select_one{
-  width: 30%; 
+  width: 30%;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;

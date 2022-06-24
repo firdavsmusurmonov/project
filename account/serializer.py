@@ -36,7 +36,7 @@ class CustomuserSerializer(serializers.ModelSerializer):
     country = serializers.SerializerMethodField()
     region = serializers.SerializerMethodField()
     city = serializers.SerializerMethodField()
-    passport = serializers.SerializerMethodField()
+
 
     class Meta:
         model = Customuser
