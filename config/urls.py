@@ -21,8 +21,15 @@ from django.conf.urls.static import static
 from account.views import homepage
 
 urlpatterns = [
-        path('admin/', admin.site.urls),
-        path('', homepage, name='home'),
-        path('api/', include('route.urls')),
-        ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL,
-                                                                                   document_root=settings.MEDIA_ROOT)
+                  path('admin/', admin.site.urls),
+                  path('', homepage, name='home'),
+                  path('api/', include('route.urls')),
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL,
+#                                                                            document_root=settings.MEDIA_ROOT)
+#
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# + static(settings.MEDIA_URL,
+#                                                                      document_root=settings.MEDIA_ROOT)
