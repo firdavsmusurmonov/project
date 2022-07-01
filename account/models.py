@@ -2,7 +2,6 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
-# Create your models here.
 def get_avatar(instance, filename):
     return "users/%s" % (filename)
 
@@ -53,16 +52,20 @@ class Customuser(AbstractUser):
     gender = models.CharField(choices=GENDER_CHOICES, max_length=50, null=True, blank=True)
     birth_date = models.DateField(default=None, null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
-    country_birth = models.ForeignKey(Region, related_name='user_country_birth', null=True, blank=True,
+    ###################
+    country_birth = models.ForeignKey(Region, default='O`zbekiston', related_name='user_country_birth', null=True,
+                                      blank=True,
                                       on_delete=models.CASCADE)
-    region_birth = models.ForeignKey(Region, related_name="user_region_birth", null=True, blank=True,
+    region_birth = models.ForeignKey(Region, default="Toshkent", related_name="user_region_birth", null=True,
+                                     blank=True,
                                      on_delete=models.CASCADE)
-    city_birth = models.ForeignKey(Region, related_name="user_city_birth", null=True, blank=True,
+    city_birth = models.ForeignKey(Region, default="Yashnabod", related_name="user_city_birth", null=True, blank=True,
                                    on_delete=models.CASCADE)
     # yashash joyi
     country = models.ForeignKey(Region, related_name='user_cuntry', null=True, blank=True, on_delete=models.CASCADE)
     region = models.ForeignKey(Region, related_name="user_region", null=True, blank=True, on_delete=models.CASCADE)
     city = models.ForeignKey(Region, related_name="user_city", null=True, blank=True, on_delete=models.CASCADE)
+    #######################
     fulladress = models.CharField(max_length=150, null=True)
     passport = models.CharField(max_length=150, null=True)
     passport_date = models.DateField(default=None, null=True)

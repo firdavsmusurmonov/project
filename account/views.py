@@ -79,37 +79,37 @@ def registr(request):
         last_name = request.data.get('last_name')
         phone = request.data.get('phone')
         gender = request.data.get('gender')
-        country_birth = request.data.get('country_birth'),
-        region_birth = request.data.get('region_birth'),
-        city_birth = request.data.get('city_birth'),
-        passport = request.data.get('passport'),
-        passport_date = request.data.get('passport_date'),
-        country = request.data.get('country'),
-        region = request.data.get('region'),
-        city = request.data.get('city'),
-        fulladress = request.data.get('fulladress'),
-        education = request.data.get('education'),
-        family = request.data.get("family")
+        country_birth = int(request.data.get('country_birth'))
+        region_birth = int(request.data.get('region_birth'))
+        city_birth = int(request.data.get('city_birth'))
+        passport = request.data.get('passport')
+        passport_date = request.data.get('passport_date')
+        country = int(request.data.get('country'))
+        region = int(request.data.get('region'))
+        city = int(request.data.get('city'))
+        fulladress = request.data.get('fulladress')
+        education = int(request.data.get('education'))
+        family = int(request.data.get("family"))
         birth_date = request.data.get('birth_date')
 
         user = Customuser.objects.filter(username=first_name).first()
         if not user:
-            # if 'avatar' in request.data:
-            #     user.avatar = request.data['avatar']
+            if 'avatar' in request.data:
+                user.avatar = request.data['avatar']
             user = Customuser.objects.create(
                 username=first_name,
                 first_name=first_name,
                 last_name=last_name,
                 gender=gender,
                 birth_date=birth_date,
-                country_birth=country_birth,
-                region_birth=region_birth,
-                city_birth=city_birth,
+                country_birth_id=country_birth,
+                region_birth_id=region_birth,
+                city_birth_id=city_birth,
                 passport=passport,
                 passport_date=passport_date,
-                country=country,
-                region=region,
-                city=city,
+                country_id=country,
+                region_id=region,
+                city_id=city,
                 fulladress=fulladress,
                 phone=phone,
                 education_id=education,
@@ -154,19 +154,31 @@ def registr(request):
 #         user = Customuser.objects.username
 
 
-@api_view(['GET'])
-@permission_classes([AllowAny, ])
-def me(request):
-    try:
-        user = request.user
-        result = {
-            'status': 1,
-            'user': CustomuserSerializer(user, many=False, context={"request": request}).data
-        }
-        return Response(result, status=status.HTTP_200_OK)
-    except KeyError:
-        res = {
-            'status': 0,
-            'msg': 'Please set all reqiured fields'
-        }
-        return Response(res)
+# @api_view(['GET'])
+# @permission_classes([AllowAny, ])
+# def me(request):
+#     try:
+#         user = request.user
+#         print(CustomuserSerializer(user, many=False, context={"request": request}).data)
+#         result = {
+#             'status': 1,
+#             'user': CustomuserSerializer(user, many=False, context={"request": request}).data
+#         }
+#         return Response(result, status=status.HTTP_200_OK)
+#     except KeyError:
+#         res = {
+#             'status': 0,
+#             'msg': 'Please set all reqiured fields'
+#         }
+#         return Response(res)
+
+class Me(viewsets.ModelViewSet, mixins.ListModelMixin):
+    queryset = Customuser.objects.all()
+
+    def list(self, request, *args, **kwargs):
+        "regstratsiyadan utmaganmisan utgan user edi ku"
+        id = request.user.pk
+        print(request.user)
+        user = Customuser.objects.filter(id=id)
+        serializer = CustomuserSerializer(user, many=True)
+        return Response(serializer.data)

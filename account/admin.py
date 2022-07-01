@@ -10,7 +10,7 @@ class CustomuserAdmin(admin.ModelAdmin):
 
 
 class RegionAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name_uz', 'name_ru', 'name_en']
+    list_display = ['id', 'name_uz', 'parent']
 
 
 admin.site.register(Customuser, CustomuserAdmin)
