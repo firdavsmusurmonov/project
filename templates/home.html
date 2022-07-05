@@ -9,11 +9,11 @@
 <body>
 <main>
 
-    <form action="" class="container" method="POST">
+    <form action="home" class="container" method="POST">
         {% csrf_token %} {{ base.as_p }}
 
         <h3 style="text-align:center" class="sarlavha">SHAXSIY MA'LUMOTLAR</h3>
-
+         <h5 style="text-align: center;color:red;">{{ error }}</h5>
         <div class="forma-bir">
 
             <label style="display:block;" for="">Familiya (ingliz tilida)<br>
@@ -154,8 +154,8 @@
 
         <label for="">XALQARO YOKI BIO PASPORT MA`LUMOTLARINGIZ (SERIYA RAQAMI VA AMAL QILISH MUDDATI)</label>
         <br>
-        <input name="passport_date" type="text" placeholder="FA1234567">
-        <select name="passport_date" id="" class="select_three">
+        <input name="passport" type="text" placeholder="FA1234567">
+        <select name="passport" id="" class="select_three">
             <option value="#">1</option>
             <option value="#">2</option>
         </select>

@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 from rest_framework import status, mixins, viewsets, filters
-from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 from rest_framework_jwt.settings import api_settings
 from account.models import Customuser, Region
 from account.serializer import CustomuserSerializer, RegionListSerializer
+from rest_framework.decorators import api_view, permission_classes
 
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
@@ -26,33 +26,36 @@ def homepage(request):
 
 
 def register(request):
-    user = Customuser.objects.filter(first_name=request.POST.get("first_name")).first()
+    user = Customuser.objects.filter(username=request.POST.get("username")).first()
     if user:
         return render(request, template_name="home.html", context={"error": "user exits"})
-    user = Customuser.objects.create(
-        first_name=request.POST.get("first_name"),
-        last_name=request.POST.get("last_name"),
-        gender=request.data.get('gender'),
-        birth_date=request.data.get('birth_date'),
-        country_birth=request.data.get('country_birth'),
-        region_birth=request.data.get('region_birth'),
-        city_birth=request.data.get('city_birth'),
-        passport=request.dat.get('passport'),
-        passport_date=request.dat.get('passport_date'),
-        country=request.data.get('country'),
-        region=request.data.get('region'),
-        city=request.data.get('city'),
-        fulladress=request.data.get('fulladress'),
-        education=request.data.get('education'),
-        family=request.data.get("family")
+    if request.POST.get():
+        user = Customuser.objects.create(
+            first_name=request.POST.get("first_name"),
+            last_name=request.POST.get("last_name"),
+            gender=request.POST.get('gender'),
+            birth_date=request.POST.get('birth_date'),
+            country_birth=request.POST.get('country_birth'),
+            region_birth=request.POST.get('region_birth'),
+            city_birth=request.POST.get('city_birth'),
+            passport=request.POST.get('passport'),
+            passport_date=request.POST.get('passport_date'),
+            country=request.POST.get('country'),
+            region=request.POST.get('region'),
+            city=request.POST.get('city'),
+            fulladress=request.POST.get('fulladress'),
+            education=request.POST.get('education'),
+            family=request.POST.get("family")
 
-    )
-    if 'avatar' in request.data:
-        user.avatar = request.data['avatar'],
-    user.save()
-    return render(request, template_name="base.html")
-    # else:
-    #     return render(request, template_name="home.html", context={"error": "Password error"})
+            )
+        user.save()
+    else:
+        return render(request, template_name="base.html", context={"error":"Password error"})
+    return redirect("/homepage")
+
+    # if 'avatar' in request.data:
+    #     user.avatar = request.data['avatar'],
+    # return render(request, template_name="base.html")
 
 
 @api_view(['GET'])
@@ -129,7 +132,7 @@ def registr(request):
             result = {
                 'status': 1,
                 'data': CustomuserSerializer(user, many=False, context={"request": request}).data,
-                'token': token
+                'token': token,
             }
             return Response(result, status=status.HTTP_200_OK)
         else:
@@ -144,14 +147,6 @@ def registr(request):
             'msg': 'Please set all reqiured fields'
         }
         return Response(res)
-
-
-#
-# @api_view(['GET'])
-# @permission_classes([IsAuthenticated, ])
-# def login(request):
-#     try:
-#         user = Customuser.objects.username
 
 
 # @api_view(['GET'])
@@ -172,13 +167,25 @@ def registr(request):
 #         }
 #         return Response(res)
 
+
 class Me(viewsets.ModelViewSet, mixins.ListModelMixin):
     queryset = Customuser.objects.all()
+    permission_classes = [AllowAny]
 
     def list(self, request, *args, **kwargs):
-        "regstratsiyadan utmaganmisan utgan user edi ku"
-        id = request.user.pk
+        user = request.user.pk
         print(request.user)
-        user = Customuser.objects.filter(id=id)
+        user = Customuser.objects.filter(id=user)
         serializer = CustomuserSerializer(user, many=True)
         return Response(serializer.data)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated, ])
+def update_profil_img(request):
+    user = request.user
+    user.status = request.data.get('status')
+    if 'avatar' in request.data:
+        user.avatar = request.data['avatar']
+        user.save()
+    return Response(status=status.HTTP_200_OK, data={'status': 'ok'})

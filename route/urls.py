@@ -13,6 +13,7 @@ urlpatterns = [
                   path('registr', registr),
                   path('me', Me.as_view({'get': 'list'})),
                   path('region', region),
+                  path('update-profil-img', update_profil_img),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
