@@ -22,20 +22,20 @@ class RegionListSerializer(serializers.ModelSerializer):
         model = Region
         fields = ["id", "name", "childs"]
 
+    def get_childs(self, instance):
+        if hasattr(instance, "childs"):
+            return RegionListSerializer(instance.childs, many=True, context={'request': self.context['request']}).data
+        else:
+            return None
+
     def get_name(self, obj):
         request = self.context.get('request')
         data = request.GET if hasattr(request, 'GET') else {}
         language = data['lan'] if 'lan' in data else 'uz'
         return getattr(obj, 'name_' + language)
 
-    def get_childs(self, instance):
-        if hasattr(instance, "childs"):
-            return RegionListSerializer(
-                instance.childs, many=True,
-                context={'request': self.context['request']}
-            ).data
-        else:
-            return None
+
+
 
 
 class CustomuserSerializer(serializers.ModelSerializer):

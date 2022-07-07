@@ -1,3 +1,4 @@
+# import avatar as avatar
 from rest_framework import routers
 
 from account.views import *
@@ -10,6 +11,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
                   path('', homepage, name='home'),
+                  path('avatar', avatar, name='avatar'),
                   path('registr', registr),
                   path('me', Me.as_view({'get': 'list'})),
                   path('region', region),

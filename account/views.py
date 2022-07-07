@@ -189,3 +189,13 @@ def update_profil_img(request):
         user.avatar = request.data['avatar']
         user.save()
     return Response(status=status.HTTP_200_OK, data={'status': 'ok'})
+
+
+def avatar(request):
+    # if not request.user.is_authenticated:
+    #     return redirect("/loginPage")
+    avatar = Customuser.objects.all()
+    context = {
+        "data": avatar,
+    }
+    return render(request, template_name="home.html", context=context)

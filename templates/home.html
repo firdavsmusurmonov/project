@@ -13,7 +13,7 @@
         {% csrf_token %} {{ base.as_p }}
 
         <h3 style="text-align:center" class="sarlavha">SHAXSIY MA'LUMOTLAR</h3>
-         <h5 style="text-align: center;color:red;">{{ error }}</h5>
+        <h5 style="text-align: center;color:red;">{{ error }}</h5>
         <div class="forma-bir">
 
             <label style="display:block;" for="">Familiya (ingliz tilida)<br>
@@ -182,11 +182,12 @@
 
         <h3>Rasim joylashtirish</h3>
         <section class="section_img">
-
+            {% for value in data %}
             <div>
-                <img src="./image/avatar.png" alt="image"><br>
+                <img src="http://127.0.0.1:8000/media/{{value.image}}" alt="image"><br>
                 <input type="file" placeholder="Fotosurat yuklash">
             </div>
+            {% endfor %}
             <div>
                 <p>
                 <p class="green">Fotosurat yuklashning qisqacha qoidalari:</p>
