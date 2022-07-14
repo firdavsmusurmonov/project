@@ -123,7 +123,7 @@ def registr(request):
         wife_education = request.data.get("wife_education")
         childs = request.data.get("childs")
 
-        user = Customuser.objects.filter(username=passport).first()
+        user = Customuser.objects.filter(username=first_name).first()
         if not user:
             if 'avatar' in request.data:
                 user.avatar = request.data['avatar']
