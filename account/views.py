@@ -123,8 +123,8 @@ def registr(request):
         wife_education = request.data.get("wife_education")
         childs = request.data.get("childs")
 
-        user = Customuser.objects.filter(username=first_name, ).first()
-        if not passport:
+        user = Customuser.objects.filter(username=passport).first()
+        if not user:
             if 'avatar' in request.data:
                 user.avatar = request.data['avatar']
             user = Customuser.objects.create(
@@ -170,8 +170,8 @@ def registr(request):
 
         if user:
             result = {
-                'status': 'ok'
-                # 'data': CustomuserSerializer(user, many=False, context={"request": request}).data,
+                'status': 'ok',
+                'data': CustomuserSerializer(user, many=False, context={"request": request}).data
                 # 'token': token,
             }
             return Response(result, status=status.HTTP_200_OK)

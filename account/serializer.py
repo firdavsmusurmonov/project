@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from account.models import *
 
+
 #
 # class EducationSerializer(serializers.ModelSerializer):
 #     class Meta:
@@ -35,9 +36,6 @@ from account.models import *
 #         return getattr(obj, 'name_' + language)
 
 
-
-
-
 class CustomuserSerializer(serializers.ModelSerializer):
     # country = serializers.SerializerMethodField()
     # region = serializers.SerializerMethodField()
@@ -51,12 +49,15 @@ class CustomuserSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customuser
         # fields = '__all__'
-        fields = ['id', 'first_name', 'last_name', 'gender', 'birth_date', 'passport', 'passport_date', 'country_birth',
-                  'country', 'fulladress', 'phone', 'education',
-                  'family']
+        fields = ['id', 'first_name', 'last_name', 'gender', 'date', 'month', 'year', 'passport', 'passport_date',
+                  'passport_month', 'passport_year', 'region_birth', 'avatar',
+                  'city_birth', 'fulladress', 'phone', 'education',
+                  'family', 'wife_first_name', 'wife_last_name', 'wife_gender', 'wife_date', 'wife_month', 'wife_year',
+                  'wife_region_birth', 'wife_city_birth', 'wife_avatar', 'wife_education', 'childs']
 
-
-
+    # def get_serializer(self, *args, **kwargs):
+    #     kwargs['partial'] = True
+    #     return super(cblk, self).get_serializer(*args, **kwargs)
     #
     # def get_country(self, obj):
     #     return RegionListSerializer(obj.country, many=False, context={'request': self.context['request']}).data

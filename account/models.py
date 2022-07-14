@@ -35,11 +35,11 @@ def get_avatar_wife(instance, filename):
 #         return self.name
 #
 #
-# class Family(models.Model):
-#     name = models.CharField(max_length=255, default="uylanmagan", null=True)
-#
-#     def __str__(self):
-#         return self.name
+class Family(models.Model):
+    name = models.CharField(max_length=255, default="uylanmagan", null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Customuser(AbstractUser):
