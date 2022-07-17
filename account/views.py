@@ -219,16 +219,16 @@ class Me(viewsets.ModelViewSet, mixins.ListModelMixin):
         serializer = CustomuserSerializer(user, many=True)
         return Response(serializer.data)
 
-#
-# @api_view(['POST'])
-# @permission_classes([IsAuthenticated, ])
-# def update_profil_img(request):
-#     user = request.user
-#     user.status = request.data.get('status')
-#     if 'avatar' in request.data:
-#         user.avatar = request.data['avatar']
-#         user.save()
-#     return Response(status=status.HTTP_200_OK, data={'status': 'ok'})
+
+@api_view(['POST'])
+@permission_classes([AllowAny, ])
+def update_profil_img(request):
+    user = request.user
+    user.status = request.data.get('status')
+    if 'avatar' in request.data:
+        user.avatar = request.data['avatar']
+        user.save()
+    return Response(status=status.HTTP_200_OK, data={'status': 'ok'})
 #
 #
 # def avatar(request):
