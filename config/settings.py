@@ -28,6 +28,13 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Application definition
+PAYCOM_SETTINGS = {
+    "KASSA_ID": "KASSA ID",  # token
+    "SECRET_KEY": "TEST KEY OR PRODUCTIN KEY",  # password
+    "ACCOUNTS": {
+        "KEY": "order_id"
+    }
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -38,6 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'account',
+    'paycomuz',
+    'click',
 ]
 
 MIDDLEWARE = [
@@ -248,3 +257,9 @@ IMPORT_STRINGS = (
 )
 
 api_settings = APISettings(USER_SETTINGS, DEFAULTS, IMPORT_STRINGS)
+SITE_ID = 1
+CLICK_SETTINGS = {
+    'service_id': '1',
+    'merchant_id': '1',
+    'secret_key': 'test'
+}

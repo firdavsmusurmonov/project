@@ -26,9 +26,9 @@ def homepage(request):
 
 
 def register(request):
-    user = Customuser.objects.filter(username=request.POST.get("username")).first()
-    if user:
-        return render(request, template_name="home.html", context={"error": "user exits"})
+    # user = Customuser.objects.filter(username=request.POST.get("username")).first()
+    # if user:
+    #     return render(request, template_name="home.html", context={"error": "user exits"})
     if request.POST.get():
         user = Customuser.objects.create(
             first_name=request.POST.get("first_name"),
@@ -64,8 +64,29 @@ def register(request):
         )
         user.save()
     else:
-        return render(request, template_name="base.html", context={"error": "Password error"})
-    return redirect("/homepage")
+        context = {
+            "birth_date": ['1', '2', '3', '4', '5', '6', '7', '8'],
+        }
+        return render(request, template_name="base.html", context=context)
+    context ={
+        "birth_date": ['1', '2', '3', '4', '5', '6', '7', '8'],
+    }
+    return render(request, template_name="base.html", context=context)
+
+# def weatherpage(request):
+#     print(request.user.is_authenticated)
+#     if not request.user.is_authenticated:
+#         return redirect("/loginPage")
+#     context = {
+#         "superuser": Superuser.objects.all(),
+#         "image_1": ['https://img2.goodfon.com/original/960x544/e/2f/arka-arki-priroda-peyzazhi.jpg'],
+#         "images": ['http://placehold.it/140x100', 'http://placehold.it/140x100', 'http://placehold.it/140x100',
+#                    'http://placehold.it/140x100', 'http://placehold.it/140x100', 'http://placehold.it/140x100'],
+#         "item": ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6', 'Item 7', 'Item 8'],
+#         "lorem": [
+#             'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum officia non minima, eveniet, neque facere sapiente quam totam odio nam omnis praesentium deleniti quaerat optio unde ea, impedit a doloremin. Perspiciatis, nostrum deleniti qui corporis numquam id consequatur nisi eius reprehenderit at,molestiae accusamus sapiente quas neque ut deserunt autem perferendis quisquam commodi ducimus aliquam.Culpa, perferendis harum reprehenderit iste blanditiis similique sit tempore minus. Dolorem fuga sitet?']
+#     }
+#     return render(request, template_name="weather.html", context=context)
 
     # if 'avatar' in request.data:
     #     user.avatar = request.data['avatar'],
@@ -95,7 +116,7 @@ def registr(request):
         first_name = request.data.get('first_name')
         last_name = request.data.get('last_name')
         phone = request.data.get('phone')
-        avatar = request.data.get('avatar')
+        avatar = request.File.get('avatar')
         gender = request.data.get('gender')
         date = request.data.get('date')
         month = request.data.get('month')
