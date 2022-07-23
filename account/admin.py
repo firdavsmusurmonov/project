@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from account.models import Customuser
+from account.models import Customuser, Order
 
 
 class CustomuserAdmin(admin.ModelAdmin):
@@ -14,6 +14,7 @@ class CustomuserAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Customuser, CustomuserAdmin)
+admin.site.register(Order)
 
 # admin.site.register(Region, RegionAdmin)
 # admin.site.register(Education)

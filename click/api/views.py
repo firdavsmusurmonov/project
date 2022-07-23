@@ -5,13 +5,13 @@ from click.click_authorization import click_authorization
 from click.api.serializer import ClickUzSerializer
 from click.status import *
 from django.db.models import Sum
-from home.models import Order, OrderItem
+from account.models import Order, OrderItem
 from clickuz import ClickUz
 from rest_framework.renderers import JSONRenderer
 
 class ClickGenereteUrl(APIView):
     def post(self, request):
-        order_id = request.POST.get('order')
+        order_id = request.POST.get ('order')
         order_price = OrderItem.objects.filter(order=order_id).aggregate(Sum('total_price')).get('total_price__sum')
 
         url = ClickUz.generate_url(order_id=str(order_id), amount=str(order_price))

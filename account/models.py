@@ -80,3 +80,17 @@ class Customuser(AbstractUser):
     wife_education = models.CharField(max_length=150, unique=False, blank=True, null=True)
     childs = models.CharField(max_length=150, unique=False, blank=True, null=True)
 
+
+class Order(models.Model):
+    user = models.ForeignKey(Customuser, on_delete=models.CASCADE, related_name='user_or')
+    price = models.CharField(max_length=200,null=True, blank=True, default=0)
+    create_date = models.DateField(auto_now_add=True, null=True)
+
+    def __str__(self):
+        return str(self.user)
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order,related_name='order_0',on_delete=models.CASCADE)
+    price = models.CharField(max_length=200, null=True, blank=True, default=0)
+    def __str__(self):
+        return str(self.price)
