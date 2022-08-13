@@ -9,6 +9,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from click.api.views import ClickUzMerchantAPIView, ClickGenereteUrl
+from paycomuz.view import TestView
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -18,6 +19,7 @@ urlpatterns = [
                   path("update-img", update_profil_img),
                   path('click', csrf_exempt(ClickUzMerchantAPIView.as_view())),
                   path('click-url/', ClickGenereteUrl.as_view()),
+                  path('paycom/',   TestView.as_view())
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

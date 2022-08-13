@@ -10,13 +10,13 @@ def get_avatar_wife(instance, filename):
     return "users/%s" % (filename)
 
 
-# class Region(models.Model):
-#     objects = None
-#     name = models.CharField(max_length=255)
-#     parent = models.ForeignKey('self', related_name="childs", blank=True, null=True, on_delete=models.CASCADE)
-#
-#     def __str__(self):
-#         return self.name
+class Region(models.Model):
+
+    name = models.CharField(max_length=255)
+    parent = models.ForeignKey('self', related_name="childs", blank=True, null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
 #
 # class Region(models.Model):
 #     name_uz = models.CharField(max_length=255, blank=True)
@@ -35,6 +35,7 @@ def get_avatar_wife(instance, filename):
 #         return self.name
 #
 #
+
 class Family(models.Model):
     name = models.CharField(max_length=255, default="uylanmagan", null=True)
 
@@ -94,3 +95,4 @@ class OrderItem(models.Model):
     price = models.CharField(max_length=200, null=True, blank=True, default=0)
     def __str__(self):
         return str(self.price)
+

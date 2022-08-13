@@ -22,7 +22,15 @@ class UserViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
 
 
 def homepage(request):
-    return render(request, template_name="home.html", context={})
+    users = Customuser.objects.all()
+    context = {
+        "birth_date": ['1', '2', '3', '4', '5', '6', '7', '8'],
+        "month_date": ["Yanvar", "Fevral", "Mart", "Aprel", "May", "Iyun", "Iyul", "Avgust", "Sentyabr", "Oktyabr",
+                       "Noyabr",
+                       "Dekabr"]
+    }
+    return render(request, template_name="home.html", context=context)
+    # return render(request, template_name="home.html", context={})
 
 
 def register(request):
@@ -67,11 +75,12 @@ def register(request):
         context = {
             "birth_date": ['1', '2', '3', '4', '5', '6', '7', '8'],
         }
-        return render(request, template_name="base.html", context=context)
-    context ={
+        return render(request, template_name="home.html", context=context)
+    context = {
         "birth_date": ['1', '2', '3', '4', '5', '6', '7', '8'],
     }
     return render(request, template_name="base.html", context=context)
+
 
 # def weatherpage(request):
 #     print(request.user.is_authenticated)
@@ -88,9 +97,9 @@ def register(request):
 #     }
 #     return render(request, template_name="weather.html", context=context)
 
-    # if 'avatar' in request.data:
-    #     user.avatar = request.data['avatar'],
-    # return render(request, template_name="base.html")
+# if 'avatar' in request.data:
+#     user.avatar = request.data['avatar'],
+# return render(request, template_name="base.html")
 
 
 # @api_view(['GET'])

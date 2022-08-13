@@ -52,58 +52,61 @@
         <div>
             <label>
                 Tug'ilgan kuningiz
+
             </label><br>
 
-            <select name="birth_date"  class="select_three">
+            <select name="birth_date" class="select_three">
                 {% for date in birth_date %}
-                <option >{{ date }}</option>
+                <option>{{ date }}</option>
                 {% endfor %}
-<!--                <option value="#">1</option>-->
-<!--                <option value="#">2</option>-->
-<!--                <option value="#">3</option>-->
-<!--                <option value="#">4</option>-->
-<!--                <option value="#">5</option>-->
-<!--                <option value="#">6</option>-->
-<!--                <option value="#">7</option>-->
-<!--                <option value="#">8</option>-->
-<!--                <option value="#">9</option>-->
-<!--                <option value="#">10</option>-->
-<!--                <option value="#">11</option>-->
-<!--                <option value="#">12</option>-->
-<!--                <option value="#">13</option>-->
-<!--                <option value="#">14</option>-->
-<!--                <option value="#">15</option>-->
-<!--                <option value="#">16</option>-->
-<!--                <option value="#">17</option>-->
-<!--                <option value="#">18</option>-->
-<!--                <option value="#">19</option>-->
-<!--                <option value="#">20</option>-->
-<!--                <option value="#">21</option>-->
-<!--                <option value="#">22</option>-->
-<!--                <option value="#">23</option>-->
-<!--                <option value="#">24</option>-->
-<!--                <option value="#">25</option>-->
-<!--                <option value="#">26</option>-->
-<!--                <option value="#">27</option>-->
-<!--                <option value="#">28</option>-->
-<!--                <option value="#">29</option>-->
-<!--                <option value="#">30</option>-->
-<!--                <option value="#">31</option>-->
+                <!--                <option value="#">1</option>-->
+                <!--                <option value="#">2</option>-->
+                <!--                <option value="#">3</option>-->
+                <!--                <option value="#">4</option>-->
+                <!--                <option value="#">5</option>-->
+                <!--                <option value="#">6</option>-->
+                <!--                <option value="#">7</option>-->
+                <!--                <option value="#">8</option>-->
+                <!--                <option value="#">9</option>-->
+                <!--                <option value="#">10</option>-->
+                <!--                <option value="#">11</option>-->
+                <!--                <option value="#">12</option>-->
+                <!--                <option value="#">13</option>-->
+                <!--                <option value="#">14</option>-->
+                <!--                <option value="#">15</option>-->
+                <!--                <option value="#">16</option>-->
+                <!--                <option value="#">17</option>-->
+                <!--                <option value="#">18</option>-->
+                <!--                <option value="#">19</option>-->
+                <!--                <option value="#">20</option>-->
+                <!--                <option value="#">21</option>-->
+                <!--                <option value="#">22</option>-->
+                <!--                <option value="#">23</option>-->
+                <!--                <option value="#">24</option>-->
+                <!--                <option value="#">25</option>-->
+                <!--                <option value="#">26</option>-->
+                <!--                <option value="#">27</option>-->
+                <!--                <option value="#">28</option>-->
+                <!--                <option value="#">29</option>-->
+                <!--                <option value="#">30</option>-->
+                <!--                <option value="#">31</option>-->
             </select>
 
             <select name="birth_date" id="" class="select_three">
-                <option value="">Yanvar</option>
-                <option value="">Fevral</option>
-                <option value="">Mart</option>
-                <option value="">Aprel</option>
-                <option value="">May</option>
-                <option value="">Iyun</option>
-                <option value="">Iyul</option>
-                <option value="">Avgust</option>
-                <option value="">Sentyabr</option>
-                <option value="">Oktyabr</option>
-                <option value="">Noyabr</option>
-                <option value="">Dekabr</option>
+                {% for month in month_date %}
+                <option value="">{{month}}</option>
+                {% endfor %}
+                <!--                <option value="">Fevral</option>-->
+                <!--                <option value="">Mart</option>-->
+                <!--                <option value="">Aprel</option>-->
+                <!--                <option value="">May</option>-->
+                <!--                <option value="">Iyun</option>-->
+                <!--                <option value="">Iyul</option>-->
+                <!--                <option value="">Avgust</option>-->
+                <!--                <option value="">Sentyabr</option>-->
+                <!--                <option value="">Oktyabr</option>-->
+                <!--                <option value="">Noyabr</option>-->
+                <!--                <option value="">Dekabr</option>-->
             </select>
 
             <select name="birth_date" id="" class="select_three">
@@ -159,23 +162,17 @@
         <br>
         <input name="passport" type="text" placeholder="FA1234567">
         <select name="passport" id="" class="select_three">
-            <option value="#">1</option>
-            <option value="#">2</option>
+            {% for date in birth_date %}
+            <option>{{ date }}</option>
+            {% endfor %}
+            <!--            <option value="#">1</option>-->
+            <!--            <option value="#">2</option>-->
         </select>
 
         <select name="passport_date" id="" class="select_three">
-            <option value="">Yanvar</option>
-            <option value="">Fevral</option>
-            <option value="">Mart</option>
-            <option value="">Aprel</option>
-            <option value="">May</option>
-            <option value="">Iyun</option>
-            <option value="">Iyul</option>
-            <option value="">Avgust</option>
-            <option value="">Sentyabr</option>
-            <option value="">Oktyabr</option>
-            <option value="">Noyabr</option>
-            <option value="">Dekabr</option>
+            {% for month in month_date %}
+            <option value="">{{ month }}</option>
+            {% endfor %}
         </select>
 
         <select name="passport_date" id="" class="select_three">
